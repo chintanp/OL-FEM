@@ -153,34 +153,52 @@
       </div>
     </div>
 
-    <div class="tabbable"> <!-- Only required for left/right tabs -->
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab">Modelling</a></li>
-            <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
-        </ul>
-        <div class="tab-content">
-            <div class="tab-pane active" id="tab1">
-                <div class="tabbable tabs-left">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#lA" data-toggle="tab">Structure</a></li>
-                        <li><a href="#lB" data-toggle="tab">Supports</a></li>
-                        <li><a href="#lC" data-toggle="tab">Material</a></li>
-                    </ul>
-                  <div class="tab-content">
-                    <div class="tab-pane active" id="lA">
-                      <p>I'm in Section A.</p>
-                    </div>
-                    <div class="tab-pane" id="lB">
-                      <p>Howdy, I'm in Section B.</p>
-                    </div>
-                    <div class="tab-pane" id="lC">
-                      <p>What up girl, this is Section C.</p>
-                    </div>
-                  </div>
-                </div>  
-            </div>
-            <div class="tab-pane" id="tab2">
-                <p>Howdy, I'm in Section 2.</p>
+    <div class="container">
+       <!-- Font and paired font of .heading/ .subheading and body from Google Fonts -->
+       <!-- www.google.com/fonts/specimen/Ubuntu -->
+       <!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
+        <div class="row-fluid heading">
+          <div class="span12">
+            <h1>FEMOL</h1>
+          </div>
+       </div>
+       <div class="row-fluid subheading">
+          <div class="span12">
+            <!-- Special typography from Bootstrap for lead paragraph. -->
+            <!-- http://twitter.github.io/bootstrap/base-css.html#typography -->
+             <p class="lead">Finite Element Modelling On-Line</p>
+          </div>    
+        </div>
+
+        <div class="tabbable"> <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Modelling</a></li>
+                <li><a href="#tab2" data-toggle="tab">Solution</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <div class="tabbable tabs-left">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#lA" data-toggle="tab">Structure</a></li>
+                            <li><a href="#lB" data-toggle="tab">Supports</a></li>
+                            <li><a href="#lC" data-toggle="tab">Material</a></li>
+                        </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="lA">
+                          <p>I'm in Section A.</p>
+                        </div>
+                        <div class="tab-pane" id="lB">
+                          <p>Howdy, I'm in Section B.</p>
+                        </div>
+                        <div class="tab-pane" id="lC">
+                          <p>What up girl, this is Section C.</p>
+                        </div>
+                      </div>
+                    </div>  
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <p>Howdy, I'm in Section 2.</p>
+                </div>
             </div>
         </div>
     </div>

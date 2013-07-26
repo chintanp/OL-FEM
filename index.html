@@ -1,13 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+    <!-- Defines the type of encoding -->
     <meta charset="utf-8">
+
+    <!--Sets the title that gets displayed in the tab name, browser head etc. -->
     <title>FEMOL</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Linking external stylesheets -->
+
+    <!-- Twitter bootstrap -->
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+    
+    <!-- Some fonts -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+    
+    <!-- Buttons for Twitter, Facebook, Google+ etc. -->
     <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">
-    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
-    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+
+    <!--Google fonts -->
     <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type"text/css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" rel="stylesheet" type="text/css">
+
+
+    <!-- Linking external javascript files -->
+
+    <!-- JQuery, there are other better sources, this is a non-standard way of adding JQuery, change this. -->
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+    
+    <!-- Twitter boootstrap -->
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+    
+
+
+    <!-- Local Styling -->
+
+    <style type="text/css">
+
+    /* Large Desktop */
+    @media (min-width: 980px) {
+      body {
+        padding-top: 60px;
+      }
+      .linediv-l {
+        border-right: 1px white solid;
+      }
+      .linediv-r {
+        border-left: 1px white solid;
+      }
+    }
+    
+    /* Landscape phones and down */
+    
+    @media (max-width: 480px) {
+      .copy {    
+        padding: 2.5% 10%;
+      }
+      .linediv-l {
+        border-bottom: 1px white solid;
+      }
+      .linediv-r {
+        border-top: 1px white solid;
+      }
+    }
+
+    /* All form factors */
+
+    /* Main body and headings  */
+
+    body {
+       font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    }
+    .heading, .subheading {
+       font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+       text-align: center;
+    }
+    p.lead {
+       padding-top: 1.5%;
+       font-size: 24px;
+       line-height: 30px;
+    }
+    p {
+       font-size: 18px;
+       line-height: 24px;
+    }
+
+    /* Video Pitch and action  */
+    .pitch {
+       padding: 2.5% 0%;
+    }
+    .order {
+       padding: 2% 0%;
+    }
+    .actions {
+       background-color: #343434;
+       padding: 3% 0%;
+    }
+    .video, .thermometer, .order, .social, .statistics {
+       text-align: center;
+    }
+    .statistics h3, .statistics p {
+       color: white;
+    }
+
+    /* Marketing Copy and Footer */
+    .copy {
+      padding-top: 2.5%;
+      padding-bottom: 2.5%;
+      text-align: justify;
+    }
+    .asset {
+      padding: 2.5% 0%;
+    }
+    .footer {
+      color: #cccccc;
+      text-align: center;
+    }
+    .footer p {
+      font-size: 11px;
+    }
+    .footer a {
+      color: #ccccff;
+    }
+    </style>
+  </head> 
+
+  <body>
+
+  <!-- Mobile-friendly navbar adapted from example. -->
+  <!-- http://twitter.github.io/bootstrap/examples/starter-template.html  -->
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">FEMOL</a>
+          <div class="nav-collapse collapse"> 
+            <ul class="nav">
+               <li class="active"><a href="#">Home</a></li>
+               <li><a href="#about">About</a></li>
+               <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div> <!-- /.nav-collapse  -->
+        </div>
+      </div>
+    </div>
+
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Modelling</a></li>
+            <li><a href="#tab2" data-toggle="tab">Section 2</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+                <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#lA" data-toggle="tab">Structure</a></li>
+                        <li><a href="#lB" data-toggle="tab">Supports</a></li>
+                        <li><a href="#lC" data-toggle="tab">Material</a></li>
+                    </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="lA">
+                      <p>I'm in Section A.</p>
+                    </div>
+                    <div class="tab-pane" id="lB">
+                      <p>Howdy, I'm in Section B.</p>
+                    </div>
+                    <div class="tab-pane" id="lC">
+                      <p>What up girl, this is Section C.</p>
+                    </div>
+                  </div>
+                </div>  
+            </div>
+            <div class="tab-pane" id="tab2">
+                <p>Howdy, I'm in Section 2.</p>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
+

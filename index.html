@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 
     <!--Sets the title that gets displayed in the tab name, browser head etc. -->
-    <title>FEMOL</title>
+    <title>OL-FEM</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -33,6 +33,9 @@
     
     <!-- Twitter boootstrap -->
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+
+    <!--Added for the drawing functionality www.raphaeljs.com -->
+    <script src="raphael-min.js"></script>
     
 
 
@@ -125,6 +128,34 @@
     .footer a {
       color: #ccccff;
     }
+
+    /* CSS added for the canvas element and to draw lines. */
+    #canvas svg {
+    width: 700px;
+    height: 500px;
+    float: left;
+    border: 1px black solid;
+    }
+
+    #canvaswrapper {
+    overflow: auto;
+    width: 730px;
+    margin: 0 auto;
+    }
+
+    #canvascolours {
+        width: 26px;
+        float: left;
+    }
+
+    #canvascolours [data-colour] {
+        width: 18px;
+        height: 18px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border: 1px black solid;
+    }
+
     </style>
   </head> 
 
@@ -159,14 +190,14 @@
        <!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
         <div class="row-fluid heading">
           <div class="span12">
-            <h1>FEMOL</h1>
+            <h1>OL-FEM</h1>
           </div>
        </div>
        <div class="row-fluid subheading">
           <div class="span12">
             <!-- Special typography from Bootstrap for lead paragraph. -->
             <!-- http://twitter.github.io/bootstrap/base-css.html#typography -->
-             <p class="lead">Finite Element Modelling On-Line</p>
+             <p class="lead">Model your problem in the browser, it gets solved in the cloud.</p>
           </div>    
         </div>
 
@@ -177,16 +208,39 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab1">
+                    <h2 class="lead">Use the mouse to model the structure. </h2>
                     <div class="tabbable tabs-left">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#lA" data-toggle="tab">Structure</a></li>
                             <li><a href="#lB" data-toggle="tab">Supports</a></li>
                             <li><a href="#lC" data-toggle="tab">Material</a></li>
+                            <li><a href="#lD" data-toggle="tab">Loads</a></li>
                         </ul>
                       <div class="tab-content">
                         <div class="tab-pane active" id="lA">
                           <p>I'm in Section A.</p>
-                        </div>
+                          <div id="canvaswrapper">
+                            <div id="canvascolours">
+                                <div data-colour="black" style="background-color: black;"></div>
+                                <div data-colour="red" style="background-color: red;"></div>
+                                <div data-colour="orange" style="background-color: orange;"></div>
+                                <div data-colour="yellow" style="background-color: yellow;"></div>
+                                <div data-colour="green" style="background-color: green;"></div>
+                                <div data-colour="blue" style="background-color: blue;"></div>
+                                <div data-colour="indigo" style="background-color: rgb(75, 0, 130);"></div>
+                                <div data-colour="violet" style="background-color: rgb(238, 130, 238);"></div>
+                                <div data-colour="white" style="background-color: white;"></div>
+                            </div>
+                           
+                            <div id="canvas">
+                            
+                            <!-- Observe in source after rendering that an SVG is found here. 
+                            This is inserted by the associated script in the end -->
+
+                            </div>
+                            
+                           </div>
+                          </div>
                         <div class="tab-pane" id="lB">
                           <p>Howdy, I'm in Section B.</p>
                         </div>
@@ -197,12 +251,78 @@
                     </div>  
                 </div>
                 <div class="tab-pane" id="tab2">
-                    <p>Howdy, I'm in Section 2.</p>
+                    <h2>You have finalised the model for solving.</h2>
+                    <p>Choose from the available solvers to solve the model.</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Copied from http://lynx.io/article/simple-drawing-application-raphaeljs --> 
+    <script>
+        var canvas = document.getElementById('canvas'),
+        paper = new Raphael(canvas, 500, 700),
+        colour = 'black',
+        mousedown = false,
+        width = 1,
+        lastX, lastY, path, pathString;
+
+        $(canvas).mousedown(function (e) {
+            mousedown = true;
+
+            var x = e.offsetX,
+                y = e.offsetY;
+
+            pathString = 'M' + x + ' ' + y + 'l0 0';
+            path = paper.path(pathString);
+            path.attr({
+                'stroke': colour,
+                'stroke-linecap': 'round',
+                'stroke-linejoin': 'round',
+                'stroke-width': width
+            });
+
+            lastX = x;
+            lastY = y;
+        });
+        $(document).mouseup(function () {
+            mousedown = false;
+        });
+
+        $(canvas).mousemove(function (e) {
+            if (!mousedown) {
+                return;
+            }
+
+            var x = e.offsetX,
+                y = e.offsetY;
+
+            pathString += 'l' + (x - lastX) + ' ' + (y - lastY);
+            path.attr('path', pathString);
+
+            lastX = x;
+            lastY = y;
+        });
+
+        $(document).keydown(function (e) {
+            if (e.keyCode > 48 && e.keyCode < 58) {
+                width = e.keyCode - 48;
+            }
+        });
+
+        $('#canvascolours [data-colour]').each(function () {
+            var $this = $(this),
+                divColour = $this.data('colour');
+
+            // Change the background colour of the box
+            $this.css('background-color', divColour);
+
+            // Add the event listener
+            $this.click(function () {
+                colour = divColour;
+            });
+        });
+    </script>
   </body>
 </html>
 

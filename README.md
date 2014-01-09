@@ -3,7 +3,14 @@ OL-FEM
 
 This is the repository for storing files related to the development project "OLFEM". 
 
-**OL-FEM** is the abbreviation for OnLine - Finite Element Modelling. 
+**OL-FEM** is the abbreviation for OnLine - Finite Element Modelling.
+
+***Why*** another modelling app ? (Brackets below represent implementation scheme)
+
+  * Context Aware (____)
+  * Multi-input & Multi-device (____)
+  * Generative Modelling (gendl)
+  * *Collaborative* (____)
 
 This project will have sub-projects which specialise in bringing the OL-FEM functionality to various disciplines including structural analysis (**StrAn**), heat and mass transfer(**HMT**), computational fluid dynamics(**CFD**) etc. 
 

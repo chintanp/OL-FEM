@@ -4,3 +4,4 @@
   * **Twitter BootStrap**: Handles frontend responsive CSS. 
   * **Yeoman**: google solution for scaffolding various techs. 
   * **AngularJS**: an implementation found here: http://plnkr.co/aG4paH
+  * **EaselJS**: To prevent handling WebGL directly, use this - has decent mouse interaction - http://www.createjs.com/tutorials/Mouse%20Interaction/

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" lang="en">
   <head>
     
     <!-- Defines the type of encoding -->
@@ -34,11 +34,38 @@
     <!-- Twitter boootstrap -->
     <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
 
-    <!--Added for the drawing functionality www.raphaeljs.com -->
-    <script src="raphael-min.js"></script>
+    <!--Added for the drawing functionality www.raphaeljs.com 
+    <script src="raphael-min.js"></script>-->
     
+    <!--Local stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 
+    <!--Angular JS -->
+    <script src="//code.angularjs.org/1.1.3/angular.js"></script>
 
+    <!-- WebGL magic -->
+    <script src="js/app_olfem.js"></script>
+
+    <!--EaselJS - for mouse interaction 
+    <script src="http://code.createjs.com/easeljs-0.7.0.min.js"></script>
+
+    <script>
+        function init() {
+          var stage = new createjs.Stage("canvas");
+          
+          //var circle = new createjs.Shape();
+          //circle.graphics.beginFill("red").drawCircle(0, 0, 50);
+          //circle.x = 100;
+          //circle.y = 100;
+          
+          stage.on("click", function() {
+            alert("clicked");
+          });
+          
+          //stage.addChild(circle);
+          stage.update();
+        }
+  </script>-->
     <!-- Local Styling -->
 
     <style type="text/css">
@@ -159,7 +186,7 @@
     </style>
   </head> 
 
-  <body>
+  <body >  <!-- onload="init();" -->
 
   <!-- Mobile-friendly navbar adapted from example. -->
   <!-- http://twitter.github.io/bootstrap/examples/starter-template.html  -->
@@ -172,7 +199,7 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">FEMOL</a>
+          <a class="brand" href="#">OL-FEM</a>
           <div class="nav-collapse collapse"> 
             <ul class="nav">
                <li class="active"><a href="#">Home</a></li>
@@ -208,7 +235,7 @@
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab1">
-                    <h2 class="lead">Use the mouse to model the structure. </h2>
+                    <h2 class="lead center">Use the mouse to model the structure. </h2>
                     <div class="tabbable tabs-left">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#lA" data-toggle="tab">Structure</a></li>
@@ -219,7 +246,7 @@
                       <div class="tab-content">
                         <div class="tab-pane active" id="lA">
                           <!-- <p>I'm in Section A.</p> -->
-                          <div id="canvaswrapper">
+                          <!-- <div id="canvaswrapper">
                             <div id="canvascolours">
                                 <div data-colour="black" style="background-color: black;"></div>
                                 <div data-colour="red" style="background-color: red;"></div>
@@ -234,13 +261,18 @@
                            
                             <div id="canvas">
                             
-                            <!-- Observe in source after rendering that an SVG is found here. 
-                            This is inserted by the associated script in the end -->
+                            // Observe in source after rendering that an SVG is found here. 
+                            // This is inserted by the associated script in the end 
 
-                            </div>
+                            </div> -->
                             
-                           </div>
-                          </div>
+                            <div id="d">
+                              <p>click and drag to draw!</p>
+                              <canvas width="1000" height="600" id="canvas" drawing></canvas>
+                            
+                            </div>
+                        </div>
+                          
                         <div class="tab-pane" id="lB">
                           <p>Howdy, I'm in Section B.</p>
                         </div>
@@ -258,7 +290,9 @@
         </div>
     </div>
 
-    <!-- Copied from http://lynx.io/article/simple-drawing-application-raphaeljs --> 
+
+    <!--
+    Copied from http://lynx.io/article/simple-drawing-application-raphaeljs  
     <script>
         var canvas = document.getElementById('canvas'),
         paper = new Raphael(canvas, 500, 700),
@@ -323,6 +357,6 @@
             });
         });
     </script>
+    -->
   </body>
 </html>
-

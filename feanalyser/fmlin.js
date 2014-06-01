@@ -12,22 +12,22 @@ var fmlin = function(samp, ig, jg) {
     var xi = samp.subset(math.index(ig-1,0));
     var eta = samp.subset(math.index(jg-1,0));
 
-    var fun = math.matrix();
-    var der = math.matrix();
+    this.fun = math.matrix();
+    this.der = math.matrix();
 
-    fun.subset(math.index(0,0), 0.25*(1.0-xi-eta+xi*eta));
-    fun.subset(math.index(1,0), 0.25*(1.0+xi-eta-xi*eta));
-    fun.subset(math.index(2,0), 0.25*(1.0+xi+eta+xi*eta));
-    fun.subset(math.index(3,0), 0.25*(1.0-xi+eta-xi*eta));
+    this.fun.subset(math.index(0,0), 0.25*(1.0-xi-eta+xi*eta));
+    this.fun.subset(math.index(1,0), 0.25*(1.0+xi-eta-xi*eta));
+    this.fun.subset(math.index(2,0), 0.25*(1.0+xi+eta+xi*eta));
+    this.fun.subset(math.index(3,0), 0.25*(1.0-xi+eta-xi*eta));
 
-    der.subset(math.index(0,0), 0.25*(eta-1));
-    der.subset(math.index(0,1), 0.25*(1-eta));
-    der.subset(math.index(0,2), 0.25*(eta+1));
-    der.subset(math.index(0,3), -0.25*(eta+1));
-    der.subset(math.index(1,0), 0.25*(xi-1));
-    der.subset(math.index(1,1), -0.25*(xi+1));
-    der.subset(math.index(1,2), 0.25*(xi+1));
-    der.subset(math.index(1,3), 0.25*(1-xi));
+    this.der.subset(math.index(0,0), 0.25*(eta-1));
+    this.der.subset(math.index(0,1), 0.25*(1-eta));
+    this.der.subset(math.index(0,2), 0.25*(eta+1));
+    this.der.subset(math.index(0,3), -0.25*(eta+1));
+    this.der.subset(math.index(1,0), 0.25*(xi-1));
+    this.der.subset(math.index(1,1), -0.25*(xi+1));
+    this.der.subset(math.index(1,2), 0.25*(xi+1));
+    this.der.subset(math.index(1,3), 0.25*(1-xi));
 
     return {der: this.der, fun: this.fun};
 }

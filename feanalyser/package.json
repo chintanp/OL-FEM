@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "sylvester": "0.0.21",
-    "mathjs": "~0.25.0"
+    "mathjs": "~0.25.0",
+    "numeric": "^1.2.6"
   }
 }

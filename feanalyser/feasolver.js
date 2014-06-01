@@ -10,7 +10,7 @@ var fmlin = require('./fmlin');
 var fmquad = require('./fmquad');
 var formbeeb = require('./formbeeb');
 var formbees = require('./formbees');
-
+var form_KK = require('./form_KK');
 
 var sylvester = require('sylvester'),
 	Matrix = sylvester.Matrix,
@@ -19,6 +19,7 @@ var sylvester = require('sylvester'),
 var mathjs = require('mathjs'),
     math = mathjs();
 
+var numeric = require('numeric');
 
 var nnd, nel, nne, nodof, eldof, n, ngpb, ngps;
 var dim;
@@ -42,7 +43,7 @@ var thick = 0.2;
 var divx = 2;			// Divisions in X and Y
 var divy = 2;
 
-var etype_index = 2;    // Type of element, 1=4-noded or 2=8-noded
+var etype_index = 1;    // Type of element, 1=4-noded or 2=8-noded
 var end_index = 1;      // Type of end condition, 1=SS, 2=Fixed, 3=Beams
 var loadtype_index = 1;     // Type of load - 1=Conc, 2=UDL
 
@@ -50,11 +51,11 @@ var X_origin = 0;
 var Y_origin = 0;
 var dim = 2;
 
-var form_KK = function(input, KK, kg, g) {
+/*var form_KK = function(input, KK, kg, g) {
 
     // This function assembles the global stiffness matrix
 
-    var KK = math.matrix();
+    // var KK = math.matrix();
 
     for(var i = 1; i <= input.eldof; i++)
     {
@@ -73,7 +74,7 @@ var form_KK = function(input, KK, kg, g) {
     }
 
     return KK;
-}
+}*/
 // ******************************************************************************
 // ******************************************************************************
 if (etype_index == 1)           // 4-noded thick plate
@@ -292,17 +293,18 @@ var g = math.matrix();
 
 var d = 0;
 
-// Initialize the element bending stiffness matrix to zero
-var keb = math.zeros(eldof, eldof);
-
-// Initialize the element shear stiffness matrix to zero
-var kes = math.zeros(eldof, eldof);
 
 
 for(var i = 1; i <= nel; i++)
 {
     coord = platelem_q8(inputs, i).coord;
     g = platelem_q8(inputs, i).g;
+
+    // Initialize the element bending stiffness matrix to zero
+    var keb = math.zeros(eldof, eldof);
+
+    // Initialize the element shear stiffness matrix to zero
+    var kes = math.zeros(eldof, eldof);
 
     // Integrate element bending stiffness and assemble it in global matrix
 
@@ -369,10 +371,10 @@ for(var i = 1; i <= nel; i++)
 
     for(var ig = 1; ig <= ngps; ig++)
     {
-        wi = sampb.subset(math.index(ig-1, 1));
+        wi = samps.subset(math.index(ig-1, 1));
         for(var jg = 1; jg <= ngps; jg++)
         {
-            wj = sampb.subset(math.index(jg-1, 1));
+            wj = samps.subset(math.index(jg-1, 1));
 
             if(etype_index == 1)
             {
@@ -430,9 +432,14 @@ for(var i = 1; i <= nel; i++)
 // **********************************************************
 // ********* End of Assembly ********************************
 
-var kks = Matrix.create(kk._data);
-var fgs = Matrix.create(fg._data);
-var delta = kks.solve(fgs);
+//var kks = Matrix.create(kk._data);
+//var fgs = Matrix.create(fg._data);
+//var delta = kks.solve(fgs);
+
+var kkn = kk._data;
+var fgn = fg._data;
+
+var deltan = numeric.solve(kkn,fgn);
 
 console.log(nnd);
 console.log(geom);

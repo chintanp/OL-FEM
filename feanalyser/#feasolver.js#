@@ -1,0 +1,83 @@
+// Variable declaration
+// Some of these are matrices, so they will need to treated separately
+
+var sylvester = require('sylvester'),
+	Matrix = sylvester.Matrix,
+	Vector = sylvester.Vector;
+
+var mathjs = require('mathjs'),
+    math = mathjs();
+
+
+var nnd, nel, nne, nodof, eldof, n, ngpb, ngps;
+var geom, connec, deeb, dees, nf, load, dim;
+var W, MX, MY, MXY, QX, QY;
+
+var Lx = 6; 			// Test values, will update from UI later on
+var Ly = 8;
+var thick = 0.2;
+
+var divx = 10;			// Divisions in X and Y
+var divy = 10;
+
+var X_origin = 0;
+var Y_origin = 0;
+var dim = 2;
+
+// Functions - all right here, later need to be placed in separate files and referenced here
+
+// This function generates the 4-noded bilinear element
+var Q4_mesh = function(len, wid, div_x, div_y, xo, yo) {
+
+	var Length = len;
+	var Width = wid;
+	var NXE = div_x;
+	var NYE = div_y;
+	var X_origin = xo;
+	var Y_origin = yo;
+	var dhx = Length / NXE;
+	var dhy = Width / NYE;
+
+	this.geom = math.matrix();
+        this.connec = math.matrix();
+	this.nel = 0;
+	this.nnd = 0;
+	var k = 0;
+
+	for( var i = 1; i <= NXE; i++ )
+	{
+		for( var j = 1; j <= NYE; j++ )
+		{
+			k = k + 1;
+
+		n1 = j + (i-1) * (NYE+1);
+		n2 = j + i * (NYE+1);
+		n3 = n1 + 1;
+		n4 = n2 + 1;
+		
+		    geom(n1, :) = [(i-1)*dhx-X_origin       (j-1)*dhy-Y_origin];
+		    geom(n2, :) = [i*dhx-X_origin             (j-1)*dhy-Y_origin];
+		    geom(n3, :) = [(i-1)*dhx-X_origin        j*dhy-Y_origin];
+		    geom(n4, :) = [i*dhx-X_origin              j*dhy-Y_origin];
+        
+		    nel = k;
+		    nnd = n4;
+        
+		    connec(nel, :) = [n1 n2 n4 n3];
+
+		    this.geom.subset(math.index(n1-1, 0), (i-1)*dhx-X_origin);
+		    this.geom.subset(math.index(n1-1, 1), (j-1)*dhy-Y_origin);
+		    this.geom.subset(math.index(n2-1, 0), (j-1)*dhx-X_origin);
+		    this.geom.subset
+		}
+	}
+}
+
+// Implement for 4-noded plate element first - change this to get element type from UI
+
+nne = 4;
+
+nel = Q4_mesh(Lx, Ly, divx, divy, X_origin, Y_origin).nel;
+nnd = Q4_mesh(Lx, Ly, divx, divy, X_origin, Y_origin).nnd;
+geom = Q4_mesh(Lx, Ly, divx, divy, X_origin, Y_origin).geom;
+connec = Q4_mesh(Lx, Ly, divx, divy, X_origin, Y_origin).connec;

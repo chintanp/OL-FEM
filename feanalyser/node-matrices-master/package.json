@@ -1,0 +1,28 @@
+{
+  "author": "Dimitry Solovyov <dimituri@gmail.com> (http://100-hour.com)",
+  "name": "matrices",
+  "description": "Classes for matrix calculations.",
+  "version": "0.2.6",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dimituri/node-matrices.git"
+  },
+  "main": "./lib/matrices",
+  "engines": {
+    "node": ">=0.4.10"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "beans": ">=0.4.0",
+    "bench": "~0.3.2",
+    "traverse": "~0.5.1"
+  },
+  "scripts": {
+    "build": "beans build",
+    "clean": "beans clean",
+    "docs": "beans docs",
+    "prepublish": "beans build",
+    "test": "beans test",
+    "watch": "beans watch"
+  }
+}

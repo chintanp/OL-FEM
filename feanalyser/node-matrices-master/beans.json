@@ -1,0 +1,10 @@
+{
+  "browser": {
+    "prefix": "node-"
+  },
+  "copyrightFrom": 2011,
+  "license": "MIT license",
+  "hooks": {
+    "tokenize": "scripts/tokenize"
+  }
+}

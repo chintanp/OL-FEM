@@ -27,8 +27,8 @@ var formbees = function(deriv, fun, nne, eldof) {
         y = deriv.subset(math.index(1,m-1));
         bees.subset(math.index(1,i-1), -1*x);
         bees.subset(math.index(0,i-1), -1*y);
-        bees.subset(math.index(0,k-1), fun.subset(math.index(m-1)));
-        bees.subset(math.index(1,j-1), fun.subset(math.index(m-1)));
+        bees.subset(math.index(0,k-1), fun.subset(math.index(m-1,0)));
+        bees.subset(math.index(1,j-1), fun.subset(math.index(m-1,0)));
     }
     return bees;
 

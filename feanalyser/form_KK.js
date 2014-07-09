@@ -22,7 +22,7 @@ var form_KK = function(input, KK, kg, g) {
                 if(gj != 0)
                 {
                     KK.subset(math.index(gi-1, gj-1), KK.subset(math.index(gi-1, gj-1)) + kg.subset(math.index(i-1,j-1)));
-                }
+                  }
             }
         }
     }
